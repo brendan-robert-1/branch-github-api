@@ -1,0 +1,5 @@
+spring:
+  profiles.active: local
+
+github:
+  url: "https://api.github.com/users"
