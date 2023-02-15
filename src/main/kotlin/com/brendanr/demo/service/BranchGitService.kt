@@ -25,7 +25,8 @@ class BranchGitService(
             logger.debug { "Getting user details for: $username" }
             githubUsersRestClient
                 .getGithubUserDetails(username)
-                .toBranchApiModel(getUserRepos(username)).also { logger.info { "Finished getting user details for: $username" } }
+                .toBranchApiModel(getUserRepos(username))
+                .also { logger.info { "Finished getting user details for: $username" } }
         } catch (e: Exception) {
             "Failed to get user details for: $username".let {
                 logger.error(e) { it }
@@ -45,7 +46,8 @@ class BranchGitService(
             logger.debug { "Getting user repo details for: $username" }
             githubUsersRestClient
                 .getGithubRepoDetails(username)
-                .toBranchApiModel().also { logger.info { "Finished getting user repo details for: $username" } }
+                .toBranchApiModel()
+                .also { logger.info { "Finished getting user repo details for: $username" } }
         } catch (e: Exception) {
             "Failed to get user details for: $username".let {
                 logger.error(e) { it }
