@@ -1,6 +1,7 @@
 package com.brendanr.demo.model.rest
 
 import com.fasterxml.jackson.annotation.JsonAlias
+import java.time.LocalDateTime
 
 data class GithubUserResponse(
     val login: String,
@@ -18,5 +19,5 @@ data class GithubUserResponse(
     val url: String,
 
     @JsonAlias("created_at")
-    val createdAt: String,
+    val createdAt: LocalDateTime
 )

@@ -1,8 +1,8 @@
 package com.brendanr.demo.model.api
 
-import com.brendanr.demo.model.rest.GithubUserRepositoriesResponse
-import com.fasterxml.jackson.annotation.JsonAlias
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonProperty
+import java.time.LocalDateTime
 
 data class BranchUserResponse(
     @JsonProperty("user_name")
@@ -22,7 +22,8 @@ data class BranchUserResponse(
     val url: String,
 
     @JsonProperty("created_at")
-    val createdAt: String,
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-dd HH:mm:ss")
+    val createdAt: LocalDateTime,
 
     val repos: List<BranchGithubRepositories>
 )

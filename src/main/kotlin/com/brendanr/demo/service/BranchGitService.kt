@@ -1,7 +1,6 @@
 package com.brendanr.demo.service
 
 import com.brendanr.demo.client.GithubUsersRestClient
-import com.brendanr.demo.controller.BranchGitController
 import com.brendanr.demo.exception.InternalServerErrorException
 import com.brendanr.demo.extensions.toBranchApiModel
 import mu.KotlinLogging
@@ -14,30 +13,41 @@ class BranchGitService(
 
     private val logger = KotlinLogging.logger {}
 
+    /**
+     * Gets the user details from the GitHub user REST api
+     *
+     * @param [username] to fetch GitHub details for
+     * @throws [IllegalArgumentException] when failed to get user details
+     */
     @Throws(InternalServerErrorException::class)
     fun getUserDetails(username: String) =
         try {
             githubUsersRestClient
                 .getGithubUserDetails(username)
                 .toBranchApiModel(getUserRepos(username))
-        } catch(e: Exception){
+        } catch (e: Exception) {
             "Failed to get user details for: $username".let {
-                logger.error (e){it}
-                throw InternalServerErrorException(e){it}
+                logger.error(e) { it }
+                throw InternalServerErrorException(e) { it }
             }
         }
 
+    /**
+     * Gets the repo details from the GitHub user REST api
+     *
+     * @param [username] to fetch GitHub repo details for
+     * @throws [IllegalArgumentException] when failed to get user details
+     */
     @Throws(InternalServerErrorException::class)
-    private fun getUserRepos(username:String) =
+    private fun getUserRepos(username: String) =
         try {
             githubUsersRestClient
                 .getGithubRepoDetails(username)
                 .toBranchApiModel()
-        } catch(e: Exception){
+        } catch (e: Exception) {
             "Failed to get user details for: $username".let {
-                logger.error (e){it}
-                throw InternalServerErrorException(e){it}
+                logger.error(e) { it }
+                throw InternalServerErrorException(e) { it }
             }
         }
-
 }
