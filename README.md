@@ -23,6 +23,8 @@ _Windows_ - `gradlew.bat bootRun`
 
 _Linux/Mac_ - `./gradlew bootRun`
 
+*You may need to change permissions to be able to run `gradlew` this can be done with: `chmod +x gradlew`
+
 You can then access this application from the following host and default port `localhost:8080`
 An example call from postman could look like:
 
