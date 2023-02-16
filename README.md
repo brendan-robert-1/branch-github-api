@@ -23,7 +23,23 @@ _Windows_ - `gradlew.bat bootRun`
 
 _Linux/Mac_ - `./gradlew bootRun`
 
-### Instruction for building 
+You can then access this application from the following host and default port `localhost:8080`
+An example call from postman could look like:
+
+`GET http://localhost:8080/octocat`
+
+or using the command tool "CUrl":
+
+`curl http://localhost:8080/octocat`
+
+or just using any browser:
+
+`http://localhost:8080/octocat`
+
+_*Note that using a browser will also attempt to download assets like the favicon which will log some errors_.
+
+
+## Instruction for building 
 A linter was included in this application. Linting can be run with
 
 `./gradlew ktLintFormat`
@@ -38,10 +54,10 @@ because I like it a little more than vanilla Java. I chose SpringBoot because it
 I am most familiar with.
 
 This application follows the typical Controller -> Service -> Client approach to responsibility separation.
-I used the Kotlin Extensions language feature to handle the pojo mapping from the source (githup api) to the 
+I used the Kotlin Extensions language feature to handle the pojo mapping from the source (GitHub api) to the 
 api model that I am exposing. I also used the `@JsonAlias` and `@JsonProperty` to handle json field name de/serialization.
 
 I used spring `RestTemplate` to execute the call to the GitHub api. I also used JUnit for unit testing.
 
-There was no specific ask for HTTP error code mappings for different scenario (NotFound vs server error). So I return all
-as a `500`. I would ask for further clarity on this to see if want to map a NotFound to a `404` or otherwise.
+There was no specific ask for HTTP error code mappings for different scenario (NotFound vs InternalServerError). So I return all
+as a `500`. I would ask for further clarity on this to see if you want to map a NotFound to a `404` or otherwise.
