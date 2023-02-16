@@ -17,7 +17,7 @@ class BranchGitService(
      * Gets the user details from the GitHub user REST api
      *
      * @param [username] to fetch GitHub details for
-     * @throws [IllegalArgumentException] when failed to get user details
+     * @throws [InternalServerErrorException] when failed to get user details
      */
     @Throws(InternalServerErrorException::class)
     fun getUserDetails(username: String) =
@@ -38,7 +38,7 @@ class BranchGitService(
      * Gets the repo details from the GitHub user REST api
      *
      * @param [username] to fetch GitHub repo details for
-     * @throws [IllegalArgumentException] when failed to get user details
+     * @throws [InternalServerErrorException] when failed to get user details
      */
     @Throws(InternalServerErrorException::class)
     private fun getUserRepos(username: String) =
